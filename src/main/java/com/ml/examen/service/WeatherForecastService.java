@@ -1,5 +1,6 @@
 package com.ml.examen.service;
 
+import com.ml.examen.model.Planet;
 import com.ml.examen.model.WeatherForecast;
 
 public interface WeatherForecastService {
@@ -10,4 +11,16 @@ public interface WeatherForecastService {
 	
 	public WeatherForecast create(WeatherForecast weatherForecast) throws Exception;
 	public WeatherForecast findByDay(int day) throws Exception;
+	
+	
+	/**
+	 * Generates forecast for 3 planets.
+	 * @param planetA
+	 * @param planetB
+	 * @param planetC
+	 * @param day 
+	 * @return
+	 * @throws Exception
+	 */
+	public WeatherForecast generateForecast(Planet planetA, Planet planetB, Planet planetC, int day) throws Exception;
 }

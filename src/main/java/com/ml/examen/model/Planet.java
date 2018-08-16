@@ -6,6 +6,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "planets")
 public class Planet {
 	
+	private static final double TWO_RADIANS = 360.00;
+	
+	
 	@Id
 	private String id;
 	
@@ -13,9 +16,36 @@ public class Planet {
 	private Position position;
 	private Double radious;
 	private Double angle;
-	private Double angularSpeed;
+	private Double angularSpeed; //Daily
 	
 	
+	public void movePlanetForDay() {
+		Double auxAngle = this.angle + this.angularSpeed;
+		
+		if (auxAngle > 0 && auxAngle >= TWO_RADIANS){
+			auxAngle-=TWO_RADIANS;
+		}
+		
+		if (auxAngle < 0 && auxAngle <= -TWO_RADIANS){
+			auxAngle+=TWO_RADIANS;
+		}
+		
+		Double x = this.getRadious() * Math.cos(Math.toRadians(auxAngle));
+		Double y = this.getRadious() * Math.sin(Math.toRadians(auxAngle));
+		
+		updatePositionAndAngle(auxAngle, x, y);
+	}
+	
+	
+	private void updatePositionAndAngle(Double angleTmp, Double x, Double y) {
+		this.position.setX(x);
+		this.position.setY(y);
+		this.setAngle(angleTmp);
+	}
+
+
+
+
 	public String getId() {
 		return id;
 	}
