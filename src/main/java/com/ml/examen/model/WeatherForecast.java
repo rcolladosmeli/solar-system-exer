@@ -7,10 +7,30 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class WeatherForecast {
 
 	@Id
+	private String id;
+	
 	private int day;
 	private String status;
 	
 	
+	public WeatherForecast() {
+		super();
+	}
+
+	public WeatherForecast(int day, String status) {
+		super();
+		this.day = day;
+		this.status = status;
+	}
+	
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getDay() {
 		return day;
 	}

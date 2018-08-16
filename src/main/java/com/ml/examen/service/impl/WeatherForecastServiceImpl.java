@@ -17,6 +17,7 @@ public class WeatherForecastServiceImpl implements WeatherForecastService{
 	@Autowired
 	WeatherForecastRepository weatherForecastRepository;
 
+	private Position sunPos = new Position(0,0);
 	
 	
 	@Override
@@ -31,29 +32,54 @@ public class WeatherForecastServiceImpl implements WeatherForecastService{
 	}
 	
 	
-	@Override
+	@Override 
 	public WeatherForecast generateForecast(Planet planetA, Planet planetB, Planet planetC, int day) throws Exception{
-		WeatherForecast forecast = new WeatherForecast();
-		forecast.setDay(day);
-		
 		Coordenates planetsCoordenates = new Coordenates(planetA.getPosition(),
 															planetB.getPosition(),
 															planetC.getPosition());
 		
+		Coordenates planetsCoordenatesWithSun = new Coordenates(planetA.getPosition(),
+																	planetB.getPosition(),
+																	sunPos);
 		
-		//LLUVIA
-		if(CustomMathUtil.areCoordenatesAlligned(planetsCoordenates)){
-			
+		//SEQUIA - cuando estan alineados y tambien con el sol
+		if(CustomMathUtil.areCoordenatesAlligned(planetsCoordenates) && 
+				CustomMathUtil.areCoordenatesAlligned(planetsCoordenatesWithSun) ){
+			return new WeatherForecast(day, "DROUGHT");
 		}
 		
-		//LLUVIA
-		if(CustomMathUtil.isPositionInsideCoordenates(planetsCoordenates, new Position(0,0))){
-			
+		//LLUVIA - cuando estan alineados (No con el sol) o forman un triangulo alrededor del sol
+		if(CustomMathUtil.areCoordenatesAlligned(planetsCoordenates) || CustomMathUtil.isPositionInsideCoordenates(planetsCoordenates, sunPos)){ 
+			return new WeatherForecast(day, "RAIN");
 		}
-
-		return forecast;
+		
+		//OPTIMAL - cuando nadie esta alineado entre si
+		if(validateOptimal(planetsCoordenates)){
+			return new WeatherForecast(day, "OPTIMAL");
+		}
+			
+		return null;
 	}
 	
 	
+	
+	private Boolean validateOptimal(Coordenates coordenates){
+		Coordenates ABSun = new Coordenates(coordenates.getPositionA(),
+											coordenates.getPositionB(),
+											sunPos);
+		
+		Coordenates ACSun = new Coordenates(coordenates.getPositionA(),
+											sunPos,
+											coordenates.getPositionC());
+		
+		Coordenates BCSun = new Coordenates(sunPos,
+											coordenates.getPositionB(),
+											coordenates.getPositionC());
+
+		
+		return (!CustomMathUtil.areCoordenatesAlligned(ABSun) && 
+				!CustomMathUtil.areCoordenatesAlligned(ACSun) && 
+				!CustomMathUtil.areCoordenatesAlligned(BCSun));
+	}
 	
 }

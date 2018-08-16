@@ -2,6 +2,8 @@ package com.ml.examen.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ import com.ml.examen.service.WeatherForecastService;
 
 @Service
 public class GalaxyServiceImpl implements GalaxyService{
+	
+	Logger logger = java.util.logging.Logger.getLogger(GalaxyServiceImpl.class.getName());
+	
 	
 	@Autowired
 	GalaxyRepository galaxyRepository;
@@ -59,8 +64,9 @@ public class GalaxyServiceImpl implements GalaxyService{
 
 			return weatherForecastService.generateForecast(planets.get(0), planets.get(1), planets.get(2), day);
 		} catch (Exception e) {
-			// TODO: handle exception
+			logger.log(Level.SEVERE, "FAILED TO GENERATE FORECAST", e);
 		}
+		
 		return null;
 	}
 }
