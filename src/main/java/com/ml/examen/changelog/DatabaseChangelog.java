@@ -17,10 +17,10 @@ public class DatabaseChangelog {
 	  coll.insert("{ name: \"Betasoide\", position:{x:0, y:0}, radious:2000, angle:0, angularSpeed:5}");
   }
   
-  @ChangeSet(order = "002", id = "galaxy", author = "rcollados")
-  public void loadGalaxy(Jongo jongo){
-	  MongoCollection mycollection = jongo.getCollection("galaxies");
-	  mycollection.insert("{name: \"galaxy\", planets:"
+  @ChangeSet(order = "002", id = "solarSystem", author = "rcollados")
+  public void loadSolarSystem(Jongo jongo){
+	  MongoCollection mycollection = jongo.getCollection("solarsystems");
+	  mycollection.insert("{name: \"solarSystem\", planets:"
 	  		+ "[{ name: \"Vulcano\", position:{x:0, y:0}, radious:1000,  angle:0, angularSpeed:-3},"
 	  		+ "{ name: \"Ferengi\", position:{x:0, y:0}, radious:500, angle:0, angularSpeed:-1},"
 	  		+ "{ name: \"Betasoide\", position:{x:0, y:0}, radious:2000, angle:0, angularSpeed:5}]}");

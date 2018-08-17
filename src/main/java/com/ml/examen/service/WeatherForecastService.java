@@ -11,7 +11,7 @@ public interface WeatherForecastService {
 	
 	public WeatherForecast create(WeatherForecast weatherForecast) throws Exception;
 	public WeatherForecast findByDay(int day) throws Exception;
-	
+	public void deleteAll() throws Exception;
 	
 	/**
 	 * Generates forecast for 3 planets.
@@ -23,4 +23,5 @@ public interface WeatherForecastService {
 	 * @throws Exception
 	 */
 	public WeatherForecast generateForecast(Planet planetA, Planet planetB, Planet planetC, int day) throws Exception;
+
 }

@@ -1,6 +1,5 @@
 package com.ml.examen.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,16 +9,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.github.mongobee.Mongobee;
-import com.ml.examen.repository.GalaxyRepository;
 
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.ml.examen"})
 @EnableMongoRepositories(basePackages = { "com.ml.examen.model", "com.ml.examen.repository"})
 public class SolarSystemExerciseApplication extends SpringBootServletInitializer{
 
-	@Autowired
-	GalaxyRepository galaxyRepository;
-	
 	@Value("${spring.data.mongodb.DB}")
 	String dbName;
 	

@@ -32,6 +32,13 @@ public class WeatherForecastServiceImpl implements WeatherForecastService{
 	}
 	
 	
+	@Override
+	public void deleteAll() throws Exception{
+		weatherForecastRepository.deleteAll();
+	}
+	
+	
+	
 	@Override 
 	public WeatherForecast generateForecast(Planet planetA, Planet planetB, Planet planetC, int day) throws Exception{
 		Coordenates planetsCoordenates = new Coordenates(planetA.getPosition(),
@@ -48,38 +55,19 @@ public class WeatherForecastServiceImpl implements WeatherForecastService{
 			return new WeatherForecast(day, "DROUGHT");
 		}
 		
-		//LLUVIA - cuando estan alineados (No con el sol) o forman un triangulo alrededor del sol
-		if(CustomMathUtil.areCoordenatesAlligned(planetsCoordenates) || CustomMathUtil.isPositionInsideCoordenates(planetsCoordenates, sunPos)){ 
+		//LLUVIA - cuando forman un triangulo alrededor del sol
+		if(CustomMathUtil.isPositionInsideCoordenates(planetsCoordenates, sunPos)){ 
 			return new WeatherForecast(day, "RAIN");
 		}
 		
-		//OPTIMAL - cuando nadie esta alineado entre si
-		if(validateOptimal(planetsCoordenates)){
+		//OPTIMAL - cuando estan alineados entre si pero no con el sol
+		if(CustomMathUtil.areCoordenatesAlligned(planetsCoordenates)){
 			return new WeatherForecast(day, "OPTIMAL");
 		}
-			
-		return null;
+		
+		return new WeatherForecast(day, "NORMAL");
 	}
 	
 	
-	
-	private Boolean validateOptimal(Coordenates coordenates){
-		Coordenates ABSun = new Coordenates(coordenates.getPositionA(),
-											coordenates.getPositionB(),
-											sunPos);
-		
-		Coordenates ACSun = new Coordenates(coordenates.getPositionA(),
-											sunPos,
-											coordenates.getPositionC());
-		
-		Coordenates BCSun = new Coordenates(sunPos,
-											coordenates.getPositionB(),
-											coordenates.getPositionC());
-
-		
-		return (!CustomMathUtil.areCoordenatesAlligned(ABSun) && 
-				!CustomMathUtil.areCoordenatesAlligned(ACSun) && 
-				!CustomMathUtil.areCoordenatesAlligned(BCSun));
-	}
 	
 }

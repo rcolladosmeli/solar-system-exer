@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "galaxies")
-public class Galaxy {
+@Document(collection = "solarsystems")
+public class SolarSystem {
 
 	@Id
 	private String id;

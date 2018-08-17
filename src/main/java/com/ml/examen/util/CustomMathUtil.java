@@ -25,7 +25,7 @@ public class CustomMathUtil {
 	}
 	
 	
-	public static BigDecimal getcoordenatesPerimeter(Coordenates coordenates) {
+	public static BigDecimal getCoordenatesPerimeter(Coordenates coordenates) {
 		BigDecimal AB = Position.getDistanceBetween(coordenates.getPositionA(), coordenates.getPositionB());
 		BigDecimal AC = Position.getDistanceBetween(coordenates.getPositionA(), coordenates.getPositionC());
 		BigDecimal BC = Position.getDistanceBetween(coordenates.getPositionB(), coordenates.getPositionC());
