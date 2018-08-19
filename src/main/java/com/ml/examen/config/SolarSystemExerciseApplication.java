@@ -7,12 +7,14 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.github.mongobee.Mongobee;
 
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.ml.examen"})
 @EnableMongoRepositories(basePackages = { "com.ml.examen.model", "com.ml.examen.repository"})
+@EnableScheduling
 public class SolarSystemExerciseApplication extends SpringBootServletInitializer{
 
 	@Value("${spring.data.mongodb.DB}")

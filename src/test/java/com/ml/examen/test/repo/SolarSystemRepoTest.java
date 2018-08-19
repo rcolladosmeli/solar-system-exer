@@ -1,4 +1,4 @@
-package com.ml.examen.test;
+package com.ml.examen.test.repo;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.ml.examen.model.SolarSystem;
 import com.ml.examen.model.Planet;
 import com.ml.examen.service.SolarSystemService;
+import com.ml.examen.test.BaseUnit;
 
 public class SolarSystemRepoTest extends BaseUnit{
 

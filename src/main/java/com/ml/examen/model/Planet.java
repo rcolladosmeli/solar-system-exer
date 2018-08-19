@@ -1,5 +1,8 @@
 package com.ml.examen.model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -30,8 +33,8 @@ public class Planet {
 			auxAngle+=TWO_RADIANS;
 		}
 		
-		Double x = this.getRadious() * Math.cos(Math.toRadians(auxAngle));
-		Double y = this.getRadious() * Math.sin(Math.toRadians(auxAngle));
+		Double x = new BigDecimal(this.getRadious() * Math.cos(Math.toRadians(auxAngle))).setScale(2, RoundingMode.UP).doubleValue();
+		Double y = new BigDecimal(this.getRadious() * Math.sin(Math.toRadians(auxAngle))).setScale(2, RoundingMode.UP).doubleValue();
 		
 		updatePositionAndAngle(auxAngle, x, y);
 	}

@@ -3,12 +3,12 @@ package com.ml.examen.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import com.ml.examen.model.Coordenates;
 import com.ml.examen.model.Position;
-  import com.ml.examen.model.Coordenates;
 
 public class CustomMathUtil {
 	
-	//Si restamos sus lados y da 0 entonces estan alineados
+	// Los lados son proporcionales.
 	public static Boolean areCoordenatesAlligned(Coordenates coordenates) {
 		Double x1 = coordenates.getPositionA().getX();
 		Double y1 = coordenates.getPositionA().getY();
@@ -20,7 +20,7 @@ public class CustomMathUtil {
 		if (((x2-x1)*(y3-y2))-((y2-y1)*(x3-x2)) == 0.00){
 			return true;
 		}
-		
+
 		return false;
 	}
 	
@@ -58,5 +58,4 @@ public class CustomMathUtil {
 		return (A == A1 + A2 + A3);
 	}
 	
-
 }

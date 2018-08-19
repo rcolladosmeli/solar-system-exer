@@ -3,7 +3,7 @@ package com.ml.examen.service;
 import java.util.List;
 
 import com.ml.examen.model.SolarSystem;
-import com.ml.examen.model.WeatherForecast;
+import com.ml.examen.model.bean.ForecastResultBean;
 
 public interface SolarSystemService {
 	
@@ -13,7 +13,6 @@ public interface SolarSystemService {
 	public List<SolarSystem> list() throws Exception;
 	public SolarSystem findByName(String name) throws Exception;
 	
-	
 	/**
 	 * Generates solarSystem forecast prediction for given solarSystem and years.
 	 * @param solarSystem
@@ -21,5 +20,6 @@ public interface SolarSystemService {
 	 * @return 
 	 * @throws Exception
 	 */
-	public List<WeatherForecast> generateSolarSystemForecastForYears(String solarSystemName, int years) throws Exception;
+	public List<ForecastResultBean> generateSolarSystemForecastForYears(String solarSystemName, int years) throws Exception;
+
 }

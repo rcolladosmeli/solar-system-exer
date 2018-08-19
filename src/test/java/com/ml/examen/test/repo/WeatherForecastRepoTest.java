@@ -1,4 +1,4 @@
-package com.ml.examen.test;
+package com.ml.examen.test.repo;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ml.examen.model.WeatherForecast;
 import com.ml.examen.service.WeatherForecastService;
+import com.ml.examen.test.BaseUnit;
 
 public class WeatherForecastRepoTest extends BaseUnit{
 
