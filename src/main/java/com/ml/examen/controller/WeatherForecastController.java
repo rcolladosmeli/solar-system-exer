@@ -1,5 +1,6 @@
 package com.ml.examen.controller;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ml.examen.model.WeatherForecast;
+import com.ml.examen.model.WeatherForecastSummary;
+import com.ml.examen.model.bean.ForecastResultBean;
+import com.ml.examen.service.SolarSystemService;
 import com.ml.examen.service.WeatherForecastService;
 
 @RestController
@@ -25,6 +29,9 @@ public class WeatherForecastController {
 	
 	@Autowired
 	WeatherForecastService weatherForecastService;
+	
+	@Autowired
+	SolarSystemService solarSystemService;
 	
 	
 	@PostMapping(consumes= {MediaType.APPLICATION_JSON_VALUE} ,produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -42,5 +49,12 @@ public class WeatherForecastController {
 	public void deleteSolarSystemForecast() throws Exception {
 		 weatherForecastService.deleteAll();
 		 logger.log(Level.INFO, "ALL FORECASTS DELETED!");
+	}
+	
+	@GetMapping(value=WeatherForecastService.summary, produces = {MediaType.APPLICATION_JSON_VALUE})
+	public WeatherForecastSummary getForecastSummary(@PathVariable("solarSystemName") String solarSystemName, 
+												     @PathVariable("years") int years) throws Exception{
+		List<ForecastResultBean> forecastBeans = solarSystemService.generateSolarSystemForecastForYears(solarSystemName, years);
+		return weatherForecastService.generateForecastSummary(forecastBeans);
 	}
 }

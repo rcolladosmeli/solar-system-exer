@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ml.examen.exception.WeatherForecastNotFoundException;
 import com.ml.examen.model.Coordenates;
 import com.ml.examen.model.Planet;
 import com.ml.examen.model.Position;
@@ -40,7 +41,12 @@ public class WeatherForecastServiceImpl implements WeatherForecastService{
 
 	@Override
 	public WeatherForecast findByDay(int day) throws Exception {
-		return weatherForecastRepository.findByDay(day);
+		WeatherForecast wf = weatherForecastRepository.findByDay(day);
+		if(wf != null){
+			return wf;
+		}else{
+			throw new WeatherForecastNotFoundException();
+		}
 	}
 	
 	

@@ -1,4 +1,4 @@
-package com.ml.examen.test;
+package com.ml.examen.test.service;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import com.ml.examen.model.WeatherForecastSummary;
 import com.ml.examen.model.bean.ForecastResultBean;
 import com.ml.examen.service.SolarSystemService;
 import com.ml.examen.service.WeatherForecastService;
+import com.ml.examen.test.BaseUnit;
 
 public class WeatherForecastServiceTest extends BaseUnit{
 

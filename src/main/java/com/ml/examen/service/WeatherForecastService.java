@@ -11,6 +11,7 @@ public interface WeatherForecastService {
 
 	public static final String baseUrl = "weatherforecast";
 	public static final String byDay = "/{day}";
+	public static final String summary = "/{solarSystemName}/{years}";
 	
 	
 	public WeatherForecast create(WeatherForecast weatherForecast) throws Exception;

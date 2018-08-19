@@ -29,7 +29,7 @@ public class CustomMathUtil {
 		BigDecimal AB = Position.getDistanceBetween(coordenates.getPositionA(), coordenates.getPositionB());
 		BigDecimal AC = Position.getDistanceBetween(coordenates.getPositionA(), coordenates.getPositionC());
 		BigDecimal BC = Position.getDistanceBetween(coordenates.getPositionB(), coordenates.getPositionC());
-		return AB.add(AC).add(BC).setScale(4, RoundingMode.UP);
+		return (AB.add(AC).add(BC)).setScale(4, RoundingMode.HALF_EVEN);
 	}
 	
 	
