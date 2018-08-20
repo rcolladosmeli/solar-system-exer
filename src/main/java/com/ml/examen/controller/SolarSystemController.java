@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ml.examen.model.SolarSystem;
 import com.ml.examen.model.bean.ForecastResultBean;
 import com.ml.examen.service.SolarSystemService;
 import com.ml.examen.service.WeatherForecastService;
@@ -30,5 +32,10 @@ public class SolarSystemController {
 		
 		List<ForecastResultBean> forecastBeans = solarSystemService.generateSolarSystemForecastForYears(solarSystemName, years);
 		weatherForecastService.createForecastsFromBean(forecastBeans);
+	}
+	
+	@GetMapping(value = SolarSystemService.byName, produces = {MediaType.APPLICATION_JSON_VALUE})
+	public SolarSystem findByName(@PathVariable("name") String name) throws Exception{
+		return solarSystemService.findByName(name);
 	}
 }

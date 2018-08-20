@@ -9,6 +9,7 @@ public interface SolarSystemService {
 	
 	public static final String baseUrl = "solar-system";
 	public static final String forecastUrl =  "/{solarSystemName}/{years}";
+	public static final String byName = "/{name}";
 
 	public List<SolarSystem> list() throws Exception;
 	public SolarSystem findByName(String name) throws Exception;

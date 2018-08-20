@@ -4,6 +4,7 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
+		jcenter()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -14,6 +15,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
 
 group = 'com.ml.examen'
 version = '0.0.1-SNAPSHOT'
@@ -24,8 +26,21 @@ repositories {
 }
 
 
+task fatJar(type: Jar) {
+	manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',  
+        	'Implementation-Version': version,
+        	'Main-Class': 'com.ml.exercise.SolarSystemExerciseApplication'
+    }
+    baseName = 'rc-solar-sys'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter')
+	compile('org.springframework.boot:spring-boot-starter'){
+    	exclude module: 'org.springframework.boot:spring-boot-starter-tomcat'
+	}
 	
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.4.RELEASE'
 	compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.0.8.RELEASE'
@@ -37,3 +52,8 @@ dependencies {
 	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+
+
+
+logger.lifecycle "war.archivePath = $war.archivePath"
