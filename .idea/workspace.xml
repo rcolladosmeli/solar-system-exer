@@ -51,6 +51,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -472,10 +479,63 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
+  <component name="ProjectView">
+    <navigator currentView="PackagesPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="solar-system-exercise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solar-system-exercise" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="solar-system-exercise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solar-system-exercise" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="solar-system-exercise" type="58d84e3e:PackageViewProjectNode" />
+              <item name="solar-system-exercise" type="eaaa3913:PackageViewModuleGroupNode" />
+            </path>
+            <path>
+              <item name="solar-system-exercise" type="58d84e3e:PackageViewProjectNode" />
+              <item name="solar-system-exercise" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="solar-system-exercise_main" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="solar-system-exercise" type="58d84e3e:PackageViewProjectNode" />
+              <item name="solar-system-exercise" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="solar-system-exercise_main" type="616d4139:PackageViewModuleNode" />
+              <item name="com.ml.examen" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="solar-system-exercise" type="58d84e3e:PackageViewProjectNode" />
+              <item name="solar-system-exercise" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="solar-system-exercise_main" type="616d4139:PackageViewModuleNode" />
+              <item name="com.ml.examen" type="1f31426a:PackageElementNode" />
+              <item name="changelog" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537721021200" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537721217709" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -499,6 +559,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
